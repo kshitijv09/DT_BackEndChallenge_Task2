@@ -29,14 +29,14 @@ title, event,date,time,description,image,icon,invitation
 **Object Data Model of A Nudge**
 
 | Field       | Type   | Description                              |
-| ----------- | ------ | ---------------------------------------- | --- | ----- | ---- | ----------- | --- |
-| title       | String | Title of the Nudge                       |     |       |      |             |
-| event       | String | Event for which the Nudge is created     |     |       |      |             |
-| date        | Date   | Date of Nudge                            |     | ----- | ---- | ----------- |
+| ----------- | ------ | ---------------------------------------- |
+| title       | String | Title of the Nudge                       |
+| event       | String | Event for which the Nudge is created     |
+| date        | Date   | Date of Nudge                            |
 | time        | String | Time at which Nudge is to be sent        |
-| description | String | Description of the Nudge                 |     | ----- | ---- | ----------- |     |
-| image       | file   | Cover photo of the nudge                 |     | ----- | ---- | ----------- |     |
-| icon        | file   | Icon for display when nudge is minimized |     | ----- | ---- | ----------- |
+| description | String | Description of the Nudge                 |
+| image       | file   | Cover photo of the nudge                 |
+| icon        | file   | Icon for display when nudge is minimized |
 | invitation  | String | One-line invitation                      |
 
 **Example Request:**
@@ -81,10 +81,9 @@ body
 
 Possible Errors
 
-| Error Code                | Description                                                    |
-| ------------------------- | -------------------------------------------------------------- | ------------------------------------------------ |
-| 400 Bad Request           | Resource does not exist or incorrect URL or incorrect endpoint | ------------------------------------------------ |
-| 500 Internal Server Error | Server Error                                                   |
+| Error Code      | Description                                                    |
+| --------------- | -------------------------------------------------------------- | --- |
+| 400 Bad Request | Resource does not exist or incorrect URL or incorrect endpoint |     |
 
 ### 2.2 Fetch Nudges
 
