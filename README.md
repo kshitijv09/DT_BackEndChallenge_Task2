@@ -8,7 +8,7 @@ All requests must be secure, i.e. https, not http.
 
 ## 2- Resources
 
-The API is RESTful and arranged around resources. All requests must be made using https.
+The API is RESTful and arranged around resources. All requests must be made using https.<br/>
 Typically, the first request you make should be to post a nudge for an event.
 
 ### 2.1 Post Nudge
@@ -17,10 +17,10 @@ Create a Nudge for an Event.
 
 **API Endpoint**: /nudge
 
-A request to create a nudge for an event looks like this:
+A request to create a nudge for an event looks like this:<br/>
 **POST https://api/v1/app/nudge**
 
-**Payload**:
+**Payload**:<br/>
 title, event,date,time,description,image,icon,invitation
 
 **Object Data Model of A Nudge**
@@ -45,6 +45,7 @@ title, event,date,time,description,image,icon,invitation
 
 **Example Request:**
 
+```
 POST api/v1/app/nudges<br/>
 Host: api.medium.com<br/>
 Content-Type: application/json<br/>
@@ -62,6 +63,7 @@ body
 “iconUrl”:“https://cdn-images-1.aloha.com/fit/0*ae1jbP_od0W6E.jpeg”,
 “invitation”:” Don’t miss out on this wonderful opportunity”
 }
+```
 
 Possible Errors
 
@@ -86,6 +88,7 @@ The response is a list of Nudges objects. An empty array is returned if no nudge
 
 **Example response:**
 
+```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -104,6 +107,7 @@ Content-Type: application/json; charset=utf-8
 },
 ]
 }
+```
 
 **Possible Errors**
 
@@ -134,7 +138,7 @@ Description<br/>
 404 Not Found<br/>
 Resource doesn’t exist or incorrect URL or endpoint<br/>
 
-#### 2.2.3 Fetch a Particular Nudge
+### 2.2.3 Fetch a Particular Nudge
 
 Returns the nudge requested by id.
 
@@ -173,28 +177,28 @@ Possible Errors
 
 Updates the details of a particular nudge referenced by its id.
 
-API Endpoint: /nudge/:id
+**API Endpoint:** /nudge/:id
 
-A request to update a single nudge created for a particular event looks like this:
-PUT https://api/v1/app/nudge/:id
+A request to update a single nudge created for a particular event looks like this:<br/>
+**PUT https://api/v1/app/nudge/:id**
 
-Payload
+Payload<br/>
 Same as payload of Add Nudge (2.1)
 
-Object Data Model
+Object Data Model<br/>
 Same as object data model of Add Nudge (2.1)
 
-Example Request
+Example Request<br/>
 Same as request of Add Nudge (2.1)
 
 ### 2.4 Delete Nudge
 
 Deletes a particular nudge referenced by its id.
 
-API Endpoint: /nudge/:id
+**API Endpoint:** /nudge/:id
 
-A request to delete a single nudge for an event looks like this:
-DELETE https://api/v1/app/nudge/:id
+A request to delete a single nudge for an event looks like this:<br/>
+**DELETE https://api/v1/app/nudge/:id**
 
 The response is a single JSON object with a message key. An error is returned if no nudge is registered by that id.
 
@@ -206,7 +210,6 @@ Example Response:
 
 Possible Errors
 
-Error Code
-Description
-400 Bad Request
-Incorrect Parameter
+| Error Code      | Description                                                    |
+| --------------- | -------------------------------------------------------------- |
+| 400 Bad Request | Resource does not exist or incorrect URL or incorrect endpoint |
