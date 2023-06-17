@@ -81,9 +81,10 @@ body
 
 Possible Errors
 
-| Error Code      | Description                                                    |
-| --------------- | -------------------------------------------------------------- | --- |
-| 400 Bad Request | Resource does not exist or incorrect URL or incorrect endpoint |     |
+| Error Code                | Description                                                    |
+| ------------------------- | -------------------------------------------------------------- |
+| 400 Bad Request           | Resource does not exist or incorrect URL or incorrect endpoint |
+| 500 Internal Server Error | Server Error                                                   |
 
 ### 2.2 Fetch Nudges
 
