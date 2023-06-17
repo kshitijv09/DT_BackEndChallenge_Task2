@@ -1,66 +1,54 @@
-#
+# Nudge API Documentation
 
-                   Nudge API Documentation
+## 1- Overview
 
-1- Overview
-
-Nudge API is a JSON-based API. All requests are made to endpoints beginning: https://api/v1/app
+Nudge API is a JSON-based API. All requests are made to endpoints beginning: **https://api/v1/app**
 
 All requests must be secure, i.e. https, not http.
 
-2- Resources
+## 2- Resources
 
 The API is RESTful and arranged around resources. All requests must be made using https.
 Typically, the first request you make should be to post a nudge for an event.
 
-2.1 Post Nudge
+### 2.1 Post Nudge
 
 Create a Nudge for an Event.
 
-API Endpoint: /nudge
+**API Endpoint**: /nudge
 
 A request to create a nudge for an event looks like this:
-POST https://api/v1/app/nudge
+**POST https://api/v1/app/nudge**
 
-Payload:
+**Payload**:
 title, event,date,time,description,image,icon,invitation
 
-Object Data Model of A Nudge
+**Object Data Model of A Nudge**
 
-Field
-Type
-Description
-title
-String
-Title of the Nudge
-event
-String
-Event for which the Nudge is created
-date
-Date
-Date of Nudge
-time
-String
-Time at which Nudge is to be sent
-description
-String
-Description of the Nudge
-image
-file
-Cover photo of the nudge
-icon
-file
-Icon for display when nudge is minimized
-invitation
-String
-One-line invitation
+| Field       | Type   | Description                              |
+| ----------- | ------ | ---------------------------------------- |
+| title       | String | Title of the Nudge                       |
+| -----       | ----   | -----------                              |
+| event       | String | Event for which the Nudge is created     |
+| -----       | ----   | -----------                              |
+| date        | Date   | Date of Nudge                            |
+| -----       | ----   | -----------                              |
+| time        | String | Time at which Nudge is to be sent        |
+| -----       | ----   | -----------                              |
+| description | String | Description of the Nudge                 |
+| -----       | ----   | -----------                              |
+| image       | file   | Cover photo of the nudge                 |
+| -----       | ----   | -----------                              |
+| icon        | file   | Icon for display when nudge is minimized |
+| -----       | ----   | -----------                              |
+| invitation  | String | One-line invitation                      |
 
-Example Request:
+**Example Request:**
 
-POST api/v1/app/nudges
-Host: api.medium.com
-Content-Type: application/json
-Accept: application/json
+POST api/v1/app/nudges<br/>
+Host: api.medium.com<br/>
+Content-Type: application/json<br/>
+Accept: application/json<br/>
 Accept-Charset: utf-8
 
 body
@@ -77,28 +65,26 @@ body
 
 Possible Errors
 
-Error Code
-Description
-400 Bad Request
-Informed Parameters in the Request
+| Error Code                | Description                                 |
+| ------------------------- | ------------------------------------------- |
+| 400 Bad Request           | Incorrect Parameters in the Request         |
+| ------------------------- | ------------------------------------------- |
+| 500 Internal Server Error | An unexpected error occurred on the server. |
 
-500 Internal Server Error
-An unexpected error occurred on the server.
+### 2.2 Fetch Nudges
 
-2.2 Fetch Nudges
-
-2.2.1 Fetch All Nudges
+#### 2.2.1 Fetch All Nudges
 
 Returns a full list of nudges in the database. This includes all nudges created for all types of events.
 
-API Endpoint: /nudge
+**API Endpoint**: /nudge
 
 A request to fetch a list of all nudges created for all events looks like this:
-GET https://api/v1/app/nudge
+**GET https://api/v1/app/nudge**
 
 The response is a list of Nudges objects. An empty array is returned if no nudges have been registered. The response array is wrapped in a data envelope.
 
-Example response:
+**Example response:**
 
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -119,22 +105,21 @@ Content-Type: application/json; charset=utf-8
 ]
 }
 
-Possible Errors
+**Possible Errors**
 
-Error Code
-Description
-404 Not Found
-Resource doesn’t exist or incorrect URL or endpoint
+| Error Code      | Description                                                    |
+| --------------- | -------------------------------------------------------------- |
+| 400 Bad Request | Resource does not exist or incorrect URL or incorrect endpoint |
 
-2.2.2 Fetch Nudges for an Event
+#### 2.2.2 Fetch Nudges for an Event
 
 Returns the list of nudges created for a particular event.
 
-API Endpoint: /nudge?event=eventName
+**API Endpoint:** /nudge?event=eventName
 
 A request to fetch a list of all nudges created for a particular event looks like this:
 
-GET https://api/v1/app/nudge?event=eventName
+**GET https://api/v1/app/nudge?event=eventName**
 
 The response is a list of Nudges created for an event by the name {eventName}. An empty array is returned if no nudges have been registered for that particular event. The response array is wrapped in a data envelope.
 
@@ -144,19 +129,19 @@ Same as Fetch All Nudges (2.2.1)
 
 Possible Errors
 
-Error Code
-Description
-404 Not Found
-Resource doesn’t exist or incorrect URL or endpoint
+Error Code<br/>
+Description<br/>
+404 Not Found<br/>
+Resource doesn’t exist or incorrect URL or endpoint<br/>
 
-2.2.3 Fetch a Particular Nudge
+#### 2.2.3 Fetch a Particular Nudge
 
 Returns the nudge requested by id.
 
-API Endpoint: /nudge/:id
+**API Endpoint**: /nudge/:id
 
 A request to fetch a single nudge created for a particular event looks like this:
-GET https://api/v1/app/nudge/:id
+**GET https://api/v1/app/nudge/:id**
 
 The response is a single JSON object with id equal to id in request parameter. An error is returned if no nudge is registered by that id.
 
@@ -175,19 +160,16 @@ Content-Type: application/json; charset=utf-8
        "imageUrl":“https://cdn-images-1.aloha.com/fit/0*ae1jbP_od0W6E.jpeg",
       “iconUrl”:“https://cdn-images-1.aloha.com/fit/0*ae1jbP_od0W6E.jpeg”,
 
-“invitation”:”Don’t miss out on this wonderful opportunity”
-},
-
-    }
+     “invitation”:”Don’t miss out on this wonderful opportunity”
+    },
 
 Possible Errors
 
-Error Code
-Description
-404 Not Found
-Resource doesn’t exist or incorrect URL or endpoint
+| Error Code      | Description                                                    |
+| --------------- | -------------------------------------------------------------- |
+| 400 Bad Request | Resource does not exist or incorrect URL or incorrect endpoint |
 
-2.3 Update Nudge Details
+### 2.3 Update Nudge Details
 
 Updates the details of a particular nudge referenced by its id.
 
@@ -205,7 +187,7 @@ Same as object data model of Add Nudge (2.1)
 Example Request
 Same as request of Add Nudge (2.1)
 
-2.4 Delete Nudge
+### 2.4 Delete Nudge
 
 Deletes a particular nudge referenced by its id.
 
